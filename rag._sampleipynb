@@ -1,0 +1,292 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyM/u+FnXDRBPa6jq6a6Igk7",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/uguazelli/telegram_bot/blob/main/rag._sampleipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "iAFcvyM3jbAU",
+        "outputId": "c1e4a948-43e8-434d-8ddf-7d1b732a2183",
+        "collapsed": true
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/2.5 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m\u001b[90m━━\u001b[0m \u001b[32m2.4/2.5 MB\u001b[0m \u001b[31m71.3 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m2.5/2.5 MB\u001b[0m \u001b[31m45.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m45.2/45.2 kB\u001b[0m \u001b[31m3.0 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m50.9/50.9 kB\u001b[0m \u001b[31m3.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[?25h"
+          ]
+        }
+      ],
+      "source": [
+        "# Install required libraries\n",
+        "!pip install -U -q langchain langchain-openai faiss-cpu openai tiktoken langchain-community"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Setup environment\n",
+        "from langchain.vectorstores import FAISS\n",
+        "from langchain.document_loaders import TextLoader\n",
+        "from langchain.text_splitter import RecursiveCharacterTextSplitter\n",
+        "from langchain.chains import RetrievalQA\n",
+        "from langchain.retrievers.multi_query import MultiQueryRetriever\n",
+        "from langchain.retrievers import ContextualCompressionRetriever\n",
+        "from langchain.retrievers.document_compressors import LLMChainExtractor\n",
+        "from langchain_openai import ChatOpenAI, OpenAIEmbeddings"
+      ],
+      "metadata": {
+        "id": "c6MKnqLtj8jN"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Replace with your OpenAI key\n",
+        "from google.colab import userdata\n",
+        "openai_key = userdata.get('OPENAI_API_KEY')"
+      ],
+      "metadata": {
+        "id": "kPjgArE-koWM"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Simulate Company Document"
+      ],
+      "metadata": {
+        "id": "si9rzxU8RbwJ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "doc_text = \"\"\"\n",
+        "Company: AcmeTech Solutions\n",
+        "\n",
+        "Our mission is to simplify logistics for small businesses using technology.\n",
+        "\n",
+        "Our main services:\n",
+        "- Route Optimization\n",
+        "- Real-time GPS Tracking\n",
+        "- Automated Delivery Notifications\n",
+        "- Driver Behavior Monitoring\n",
+        "\n",
+        "Key Policies:\n",
+        "- Drivers must check in every 2 hours.\n",
+        "- All deliveries must be signed digitally.\n",
+        "- Drivers are required to follow safety procedures.\n",
+        "- Breaks must be logged via the mobile app.\n",
+        "\n",
+        "Support is available 8am to 6pm on weekdays.\n",
+        "\"\"\"\n",
+        "\n",
+        "with open(\"company_doc.txt\", \"w\") as f:\n",
+        "    f.write(doc_text)\n"
+      ],
+      "metadata": {
+        "id": "I4Gt_EGkRY8v"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Start"
+      ],
+      "metadata": {
+        "id": "C8w6OWTZdssD"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Load doc\n",
+        "loader = TextLoader(\"company_doc.txt\")\n",
+        "documents = loader.load()\n",
+        "\n",
+        "# Chunk it\n",
+        "splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=50)\n",
+        "docs = splitter.split_documents(documents)"
+      ],
+      "metadata": {
+        "id": "k4k7IRTrlW9x"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Embeddings + Vectorstore\n",
+        "embeddings = OpenAIEmbeddings(openai_api_key=openai_key)\n",
+        "db = FAISS.from_documents(docs, embeddings)"
+      ],
+      "metadata": {
+        "id": "5Goq0xI0ljLS"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Multi-query using GPT-3.5\n",
+        "\n",
+        "# Create a retriever that fetches top 4 similar chunks from the vector DB\n",
+        "retriever=db.as_retriever(search_kwargs={\"k\": 4})\n",
+        "\n",
+        "# Use GPT-3.5 to generate 3 variations of the user's question to improve retrieval\n",
+        "llm=ChatOpenAI(openai_api_key=openai_key, temperature=0, model=\"gpt-3.5-turbo\")\n",
+        "\n",
+        "multi_query_retriever = MultiQueryRetriever.from_llm(\n",
+        "    retriever,\n",
+        "    llm\n",
+        ")"
+      ],
+      "metadata": {
+        "id": "J0XWnnmhrrLZ"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Create a compressor using GPT-3.5\n",
+        "# This will summarize each retrieved chunk to keep only the parts relevant to the question\n",
+        "# Helps reduce token usage and improve answer quality\n",
+        "compressor = LLMChainExtractor.from_llm(\n",
+        "    ChatOpenAI(openai_api_key=openai_key, temperature=0, model=\"gpt-3.5-turbo\")\n",
+        ")"
+      ],
+      "metadata": {
+        "id": "mfv5NvPys__X"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Wrap the multi-query retriever with a contextual compressor\n",
+        "# This means: after retrieving chunks with multi-query, we'll compress them to remove irrelevant info\n",
+        "# - base_retriever: finds relevant chunks using rephrased queries\n",
+        "# - base_compressor: uses an LLM (like GPT-3.5) to extract only the relevant parts from those chunks\n",
+        "# The result is: fewer tokens sent to GPT-4, and higher answer accuracy\n",
+        "final_retriever = ContextualCompressionRetriever(\n",
+        "    base_compressor=compressor,            # LLM-based filter that summarizes each retrieved chunk\n",
+        "    base_retriever=multi_query_retriever   # Retriever that fetches diverse results using reworded queries\n",
+        ")\n"
+      ],
+      "metadata": {
+        "id": "NUcajh02zNZd"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Build the RetrievalQA chain (RAG = retrieval + generation)\n",
+        "qa_chain = RetrievalQA.from_chain_type(\n",
+        "\n",
+        "    # 🔍 This is the LLM that will generate the final answer (uses GPT-4 for better quality)\n",
+        "    llm=ChatOpenAI(openai_api_key=openai_key, temperature=0, model=\"gpt-4\"),\n",
+        "\n",
+        "    # ⚙️ Chain type = \"stuff\" means it will \"stuff\" all the retrieved context into a single prompt\n",
+        "    # Other options: \"map_reduce\", \"refine\", etc. — but \"stuff\" is simplest and fastest\n",
+        "    chain_type=\"stuff\",\n",
+        "\n",
+        "    # 📚 This is your custom retriever: multi-query + compression\n",
+        "    # It finds relevant chunks and filters them before sending to GPT-4\n",
+        "    retriever=final_retriever,\n",
+        "\n",
+        "    # 📎 This returns the source docs used to generate the answer\n",
+        "    # Useful for traceability, UI display, or debugging\n",
+        "    return_source_documents=True\n",
+        ")\n"
+      ],
+      "metadata": {
+        "id": "r8k9nTphzPv7"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "query = \"What should drivers do during their shift?\"\n",
+        "response = qa_chain.invoke(query)\n",
+        "\n",
+        "print(\"Question:\", query)\n",
+        "print(\"Answer:\", response[\"result\"])\n",
+        "print(\"\\nRetrieved Sources:\")\n",
+        "for doc in response['source_documents']:\n",
+        "    print(\"-\", doc.page_content)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "hb7I0Nx8zTG9",
+        "outputId": "11308e49-295c-4748-92cd-4d257eca32cb"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Question: What should drivers do during their shift?\n",
+            "Answer: During their shift, drivers must check in every 2 hours, follow safety procedures, and log their breaks via the mobile app. Additionally, all deliveries they make must be signed digitally.\n",
+            "\n",
+            "Retrieved Sources:\n",
+            "- - Drivers must check in every 2 hours.\n",
+            "- All deliveries must be signed digitally.\n",
+            "- Drivers are required to follow safety procedures.\n",
+            "- Breaks must be logged via the mobile app.\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
