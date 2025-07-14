@@ -16,7 +16,7 @@ venv/
 Thumbs.db
 
 # Windows security metadata
-*.Zone.Identifier
+*.Identifier
 
 # Local config / secrets
 *.env
