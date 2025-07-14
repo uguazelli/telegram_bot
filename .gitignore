@@ -1,0 +1,32 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.env/
+.envrc/
+
+# OS metadata files
+.DS_Store
+Thumbs.db
+
+# Windows security metadata
+*.Zone.Identifier
+
+# Local config / secrets
+*.env
+*.key
+*.pem
+
+# Logs and data
+*.log
+*.sqlite
+*.db
+
+# Ignore company data unless you want it versioned
+company_doc.txt
