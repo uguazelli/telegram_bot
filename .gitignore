@@ -28,5 +28,4 @@ Thumbs.db
 *.sqlite
 *.db
 
-# Ignore company data unless you want it versioned
-company_doc.txt
+
