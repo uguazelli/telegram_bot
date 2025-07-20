@@ -12,9 +12,6 @@ dataclasses-json==0.6.7
 dnspython==2.7.0
 email_validator==2.2.0
 faiss-cpu==1.11.0.post1
-fastapi==0.116.1
-fastapi-cli==0.0.8
-fastapi-cloud-cli==0.1.4
 filetype==1.2.0
 frozenlist==1.7.0
 google-ai-generativelanguage==0.6.18
@@ -30,7 +27,6 @@ httptools==0.6.4
 httpx==0.28.1
 httpx-sse==0.4.1
 idna==3.10
-Jinja2==3.1.6
 jsonpatch==1.33
 jsonpointer==3.0.0
 langchain==0.3.26

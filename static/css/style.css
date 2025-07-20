@@ -1,0 +1,123 @@
+body {
+    background: #f5f7fa;
+    color: #222;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 2rem;
+}
+
+img.logo {
+    max-width: 150px;
+    filter: drop-shadow(0 0 10px #ccc);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #1a73e8;
+    margin-top: 1rem;
+}
+
+p.description {
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.field {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    max-width: 500px;
+    margin: 1rem auto;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.field input[type="password"],
+.field input[type="text"],
+textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #222;
+}
+
+textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.buttons {
+    margin-top: 2rem;
+}
+
+button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.start {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.stop {
+    background-color: #f44336;
+    color: white;
+}
+
+.reveal-btn,
+.copy-btn {
+    margin-top: 0.3rem;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    background-color: #ddd;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reveal-btn:hover,
+.copy-btn:hover {
+    background-color: #ccc;
+}
+
+.footer {
+    margin-top: 3rem;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+#logViewer {
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: monospace;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
