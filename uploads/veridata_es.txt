@@ -1,0 +1,97 @@
+📄 Nombre de la Empresa: Veridata
+Sitio web: https://veridatapro.com
+Correo electrónico: hello.veridatapro@gmail.com
+Teléfono: +54 911 7082-3016
+Sede: Asunción, Paraguay
+Idiomas Soportados: Inglés, Español, Portugués
+
+🕒 Horario de Atención
+Horario Regular: Lunes a viernes – 9:00 a 17:00 (UTC-3)
+
+Soporte de Emergencia: 24/7 (incluye fines de semana y feriados) por teléfono o email
+
+💡 ¿Qué es Veridata?
+Veridata es una empresa de servicios tecnológicos que potencia a las pequeñas y medianas empresas (PyMEs) de América Latina con automatización empresarial basada en inteligencia artificial.
+
+Integramos IA, automatización de flujos y orquestación de sistemas para que los negocios escalen con confianza, claridad y velocidad.
+
+🛠️ Qué hacemos – Servicios principales
+🤖 Automatización Empresarial con IA
+Automatización de tareas repetitivas o manuales
+
+Creación de flujos de trabajo inteligentes
+
+Procesos siempre activos con lógica de IA
+
+🧠 Consultoría Estratégica de IA & Roadmap
+Mapeo de oportunidades y análisis del negocio
+
+Planes personalizados de adopción de IA
+
+Recomendación de herramientas y modelos
+
+🔗 Integración de Sistemas Mejorada por IA
+Conexión de Salesforce, ERPs, APIs, bases de datos
+
+Unificación de datos y flujos entre sistemas
+
+Automatización entre plataformas
+
+🗣️ Asistentes de IA & Agentes GPT Personalizados
+Chatbots internos y copilotos con IA
+
+Agentes especializados basados en GPT
+
+Interfaces en lenguaje natural para equipos o clientes
+
+📊 Optimización de Procesos con IA
+Análisis de cuellos de botella e ineficiencias
+
+Apoyo automatizado para la toma de decisiones
+
+Predicción de resultados a partir de datos históricos
+
+🧪 Tecnologías que usamos
+LLMs como Gemini y GPT
+
+LangChain & n8n (automatización de flujos)
+
+Python, Node.js, APIs REST
+
+Salesforce, MuleSoft, ServiceNow
+
+Google Generative AI (Gemini Pro/Flash)
+
+FAISS, bases vectoriales, embeddings
+
+💸 Precios
+1. Planes Mensuales de Automatización con IA
+Suscripción mensual (precio fijo)
+
+Incluye soporte, mantenimiento y mejoras continuas
+
+Ideal para negocios que buscan evolución constante
+
+2. Proyectos Puntuales
+Precio cerrado por solución
+
+Entregables y tiempos definidos
+
+Perfecto para pilotos o primeras automatizaciones
+
+Contáctanos para una cotización personalizada según tus objetivos.
+
+❓ Preguntas Frecuentes
+Q: ¿Qué puede hacer Veridata por mi empresa?
+A: Detectamos en qué procesos pierdes tiempo y lo automatizamos con IA. Ahorras horas, reduces errores y haces tus herramientas más inteligentes.
+
+Q: No soy técnico. ¿Igual puedo trabajar con ustedes?
+A: Por supuesto. Traducimos tus necesidades en soluciones con IA. Tú nos explicas el problema, nosotros creamos la solución.
+
+Q: ¿Son una herramienta o una consultora?
+A: Somos un servicio. Combinamos lo mejor de cada herramienta y modelo según tu caso, sin atarte a proveedores.
+
+Q: ¿Trabajan fuera de Paraguay o Argentina?
+A: Sí. Somos 100% remotos y trabajamos con clientes en toda Latinoamérica e incluso fuera de ella.
+
+📅 Última actualización: Julio de 2025

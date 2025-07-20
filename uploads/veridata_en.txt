@@ -1,0 +1,107 @@
+📄 Veridata Company Knowledge Base
+Company Name: Veridata
+Website: https://veridatapro.com
+Email: hello.veridatapro@gmail.com
+Phone: +54 911 7082-3016
+Headquarters: Asunción, Paraguay
+Languages Supported: English, Spanish, Portuguese
+
+🕒 Operating Hours
+Standard Hours: Monday to Friday – 9:00 AM to 5:00 PM (UTC-3)
+
+Emergency Support: 24/7 (including weekends and holidays) via phone or email
+
+💡 What is Veridata?
+Veridata is a technology services company that empowers small and medium-sized businesses (SMEs) with AI-powered business automation in Latin America.
+
+We integrate artificial intelligence, workflow automation, and system orchestration to help businesses scale with confidence, clarity, and speed.
+
+🛠️ What We Do – Core Services
+AI-Powered Business Automation
+
+Automate repetitive or manual tasks
+
+Build intelligent workflows
+
+Create always-on processes using AI logic
+
+Strategic AI Consulting & Roadmapping
+
+Business discovery and opportunity mapping
+
+Custom AI adoption plans
+
+Tool and model recommendations
+
+AI-Enhanced System Integration
+
+Connect Salesforce, ERPs, APIs, databases
+
+Unify data and workflows across systems
+
+Build cross-platform automations
+
+Custom AI Assistants & GPT Agents
+
+Internal AI chatbots and copilots
+
+Task-focused GPT-based agents
+
+Natural language interfaces for staff or customers
+
+Process Optimization with AI Insights
+
+Analyze bottlenecks and inefficiencies
+
+Provide automated decision support
+
+Forecast outcomes using historical data
+
+🤖 Technologies We Use
+LLMs like Gemini and GPT
+
+LangChain & n8n (automation workflows)
+
+Python, Node.js, REST APIs
+
+Salesforce, MuleSoft, ServiceNow
+
+Google Generative AI (Gemini Pro/Flash)
+
+FAISS, Vector DBs, embeddings
+
+💸 Pricing
+We offer two engagement options:
+
+1. Monthly AI Automation Plans
+
+Monthly subscription (fixed price)
+
+Includes maintenance, support & improvement cycles
+
+Ideal for businesses needing continuous AI evolution
+
+2. One-Time Projects
+
+Flat-fee per solution
+
+Clear deliverables and timelines
+
+Best for first-time automation or AI prototypes
+
+Contact us for a custom quote based on your goals.
+
+❓ FAQs
+Q: What can Veridata do for my business?
+A: We identify where your operations waste time and automate it with AI. We help you save hours, reduce human error, and make your tools smarter.
+
+Q: I’m not technical. Can I still work with you?
+A: Absolutely. We specialize in translating business needs into AI workflows. You explain your pain point, and we design the solution.
+
+Q: Are you a tool or a consulting service?
+A: We are a service provider. We combine the best tools and models for your use case — no vendor lock-in.
+
+Q: Do you work outside of Paraguay or Argentina?
+A: Yes. We are fully remote and work with clients throughout Latin America and internationally.
+
+📅 Last updated: July 2025

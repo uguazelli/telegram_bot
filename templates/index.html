@@ -14,18 +14,62 @@
         <p class="description">
             Configure your Gemini and Telegram API Keys and upload a knowledge base to power your AI assistant.
         </p>
+
+        {% if google_api_key or telegram_api_key %}
+        <div class="apikey-info">
+            {% if google_api_key %}
+            <div class="key-block">
+                <label>Gemini API Key:
+                    <input type="password" id="google_key_display" value="{{ google_api_key }}" readonly />
+                    <button type="button" onclick="toggleVisibility('google_key_display', this)">👁 Show</button>
+                    <button type="button" onclick="copyToClipboard('{{ google_api_key }}')">📋 Copy</button>
+                </label>
+            </div>
+            {% endif %}
+            {% if telegram_api_key %}
+            <div class="key-block">
+                <label>Telegram API Key:
+                    <input type="password" id="telegram_key_display" value="{{ telegram_api_key }}" readonly />
+                    <button type="button" onclick="toggleVisibility('telegram_key_display', this)">👁 Show</button>
+                    <button type="button" onclick="copyToClipboard('{{ telegram_api_key }}')">📋 Copy</button>
+                </label>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <label for="knowledge_file">Current Knowledge Base File:
+            {% if uploaded_file %}
+            <a href="/download-file" target="_blank" class="download-link">{{ uploaded_file }}</a>
+            {% endif %}
+        </label>
+
+        <br />
+
+
         <form action="/submit" method="post" enctype="multipart/form-data">
-            <label for="api_key">Gemini API Key:</label>
-            <input type="text" id="api_key" name="api_key" required />
+            <label for="api_key">Update Gemini API Key:</label>
+            <input type="text" id="api_key" name="api_key" value="" placeholder="Leave blank to keep current"
+                autocomplete="off" />
 
-            <label for="telegram_key">Telegram Bot API Key:</label>
-            <input type="text" id="telegram_key" name="telegram_key" required />
+            <label for="telegram_key">Update Telegram API Key:</label>
+            <input type="text" id="telegram_key" name="telegram_key" value="" placeholder="Leave blank to keep current"
+                autocomplete="off" />
 
-            <label for="knowledge_file">Upload Base Knowledge (.txt):</label>
-            <input type="file" id="knowledge_file" name="knowledge_file" accept=".txt" required />
+            <label for="knowledge_file">Upload Base Knowledge (.txt): </label>
+
+            <input type="file" id="knowledge_file" name="knowledge_file" accept=".txt" {% if not uploaded_file
+                %}required{% endif %} />
+
+            {% if success %}
+            <div class="success-message">
+                ✅ Configuration saved successfully!
+            </div>
+            {% endif %}
 
             <input type="submit" value="Save & Activate" />
         </form>
+
         <footer>
             Powered by <strong>Veridata</strong> —
             <a href="https://veridatapro.com" target="_blank">veridatapro.com</a><br />
@@ -34,5 +78,31 @@
         </footer>
     </div>
 </body>
+
+<script>
+    function copyToClipboard(value) {
+        navigator.clipboard.writeText(value).then(() => {
+            alert("Copied to clipboard!");
+        });
+    }
+
+    function toggleVisibility(id, btn) {
+        const input = document.getElementById(id);
+        if (input.type === "password") {
+            input.type = "text";
+            btn.textContent = "🙈 Hide";
+        } else {
+            input.type = "password";
+            btn.textContent = "👁 Show";
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const msg = document.querySelector('.success-message');
+        if (msg) {
+            setTimeout(() => msg.style.display = 'none', 5000);
+        }
+    });
+</script>
 
 </html>

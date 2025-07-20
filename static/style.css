@@ -30,8 +30,9 @@ h1 {
 }
 
 label {
-    display: block;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+
     margin-bottom: 6px;
     font-weight: 600;
     color: #374151;
@@ -71,4 +72,23 @@ footer {
 footer a {
     color: #3f83f8;
     text-decoration: none;
+}
+
+.masked {
+    font-family: monospace;
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+
+.download-link {
+    display: inline-block;
+    margin-top: 6px;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.download-link:hover {
+    text-decoration: underline;
 }

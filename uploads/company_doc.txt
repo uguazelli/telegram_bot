@@ -1,107 +1,98 @@
-📄 Veridata Company Knowledge Base
-Company Name: Veridata
-Website: https://veridatapro.com
+📄 Nome da Empresa: Veridata
+Site: https://veridatapro.com
 Email: hello.veridatapro@gmail.com
-Phone: +54 911 7082-3016
-Headquarters: Asunción, Paraguay
-Languages Supported: English, Spanish, Portuguese
+Telefone: +54 911 7082-3016
+Sede: Assunção, Paraguai
+Idiomas Suportados: Inglês, Espanhol, Português
 
-🕒 Operating Hours
-Standard Hours: Monday to Friday – 9:00 AM to 5:00 PM (UTC-3)
+🕒 Horário de Atendimento
+Horário Comercial: Segunda a sexta — das 9h às 17h (UTC-3)
 
-Emergency Support: 24/7 (including weekends and holidays) via phone or email
+Suporte Emergencial: 24h/7 dias (incluindo finais de semana e feriados) via telefone ou e-mail
 
-💡 What is Veridata?
-Veridata is a technology services company that empowers small and medium-sized businesses (SMEs) with AI-powered business automation in Latin America.
+💡 O que é a Veridata?
+A Veridata é uma empresa de serviços tecnológicos que capacita pequenas e médias empresas (PMEs) da América Latina com automação de negócios baseada em inteligência artificial.
 
-We integrate artificial intelligence, workflow automation, and system orchestration to help businesses scale with confidence, clarity, and speed.
+Unimos IA, automação de fluxos de trabalho e orquestração de sistemas para ajudar empresas a escalarem com confiança, clareza e velocidade.
 
-🛠️ What We Do – Core Services
-AI-Powered Business Automation
+🛠️ O que fazemos – Serviços principais
+🤖 Automação de Negócios com IA
+Automatize tarefas repetitivas ou manuais
 
-Automate repetitive or manual tasks
+Construa fluxos de trabalho inteligentes
 
-Build intelligent workflows
+Crie processos sempre ativos usando lógica de IA
 
-Create always-on processes using AI logic
+🧠 Consultoria Estratégica em IA & Planejamento
+Descoberta e mapeamento de oportunidades
 
-Strategic AI Consulting & Roadmapping
+Planos personalizados de adoção de IA
 
-Business discovery and opportunity mapping
+Recomendação de ferramentas e modelos
 
-Custom AI adoption plans
+🔗 Integração de Sistemas com IA
+Conecte Salesforce, ERPs, APIs, bancos de dados
 
-Tool and model recommendations
+Unifique dados e fluxos de sistemas distintos
 
-AI-Enhanced System Integration
+Crie automações entre plataformas
 
-Connect Salesforce, ERPs, APIs, databases
+🗣️ Assistentes de IA Personalizados & Agentes GPT
+Chatbots internos e copilotos com IA
 
-Unify data and workflows across systems
+Agentes especializados baseados em GPT
 
-Build cross-platform automations
+Interfaces em linguagem natural para equipes e clientes
 
-Custom AI Assistants & GPT Agents
+📊 Otimização de Processos com IA
+Análise de gargalos e ineficiências
 
-Internal AI chatbots and copilots
+Suporte a decisões com IA
 
-Task-focused GPT-based agents
+Previsão de resultados com base em dados históricos
 
-Natural language interfaces for staff or customers
+🧪 Tecnologias que usamos
+Modelos LLM como Gemini e GPT
 
-Process Optimization with AI Insights
+LangChain & n8n (automação de fluxos)
 
-Analyze bottlenecks and inefficiencies
-
-Provide automated decision support
-
-Forecast outcomes using historical data
-
-🤖 Technologies We Use
-LLMs like Gemini and GPT
-
-LangChain & n8n (automation workflows)
-
-Python, Node.js, REST APIs
+Python, Node.js, APIs REST
 
 Salesforce, MuleSoft, ServiceNow
 
 Google Generative AI (Gemini Pro/Flash)
 
-FAISS, Vector DBs, embeddings
+FAISS, bancos vetoriais, embeddings
 
-💸 Pricing
-We offer two engagement options:
+💸 Preços
+1. Planos Mensais de Automação com IA
+Assinatura mensal (preço fixo)
 
-1. Monthly AI Automation Plans
+Inclui manutenção, suporte e ciclos de melhorias
 
-Monthly subscription (fixed price)
+Ideal para empresas que buscam evolução contínua com IA
 
-Includes maintenance, support & improvement cycles
+2. Projetos Avulsos
+Preço fixo por solução
 
-Ideal for businesses needing continuous AI evolution
+Entregas e prazos claros
 
-2. One-Time Projects
+Ideal para protótipos ou primeira automação com IA
 
-Flat-fee per solution
+Solicite um orçamento personalizado com base nas metas do seu negócio.
 
-Clear deliverables and timelines
+❓ Perguntas Frequentes
+Q: O que a Veridata pode fazer pela minha empresa?
+A: Identificamos onde sua operação perde tempo e automatizamos isso com IA. Você economiza horas, reduz erros e torna suas ferramentas mais inteligentes.
 
-Best for first-time automation or AI prototypes
+Q: Não sou técnico. Posso mesmo assim contratar vocês?
+A: Claro! Nosso diferencial é traduzir necessidades de negócio em fluxos automatizados com IA. Você explica o problema, nós desenhamos a solução.
 
-Contact us for a custom quote based on your goals.
+Q: Vocês são uma ferramenta ou uma consultoria?
+A: Somos um serviço. Usamos as melhores ferramentas e modelos para o seu caso — sem fidelização a fornecedores.
 
-❓ FAQs
-Q: What can Veridata do for my business?
-A: We identify where your operations waste time and automate it with AI. We help you save hours, reduce human error, and make your tools smarter.
+Q: Atendem fora do Paraguai ou Argentina?
+A: Sim. Atendemos remotamente toda a América Latina e também clientes internacionais.
 
-Q: I’m not technical. Can I still work with you?
-A: Absolutely. We specialize in translating business needs into AI workflows. You explain your pain point, and we design the solution.
+📅 Última atualização: Julho de 2025
 
-Q: Are you a tool or a consulting service?
-A: We are a service provider. We combine the best tools and models for your use case — no vendor lock-in.
-
-Q: Do you work outside of Paraguay or Argentina?
-A: Yes. We are fully remote and work with clients throughout Latin America and internationally.
-
-📅 Last updated: July 2025
