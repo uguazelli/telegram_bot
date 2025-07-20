@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veridata AI Setup</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Veridata AI Setup</h1>
+        <p class="description">
+            Configure your Gemini and Telegram API Keys and upload a knowledge base to power your AI assistant.
+        </p>
+        <form action="/submit" method="post" enctype="multipart/form-data">
+            <label for="api_key">Gemini API Key:</label>
+            <input type="text" id="api_key" name="api_key" required />
+
+            <label for="telegram_key">Telegram Bot API Key:</label>
+            <input type="text" id="telegram_key" name="telegram_key" required />
+
+            <label for="knowledge_file">Upload Base Knowledge (.txt):</label>
+            <input type="file" id="knowledge_file" name="knowledge_file" accept=".txt" required />
+
+            <input type="submit" value="Save & Activate" />
+        </form>
+        <footer>
+            Powered by <strong>Veridata</strong> —
+            <a href="https://veridatapro.com" target="_blank">veridatapro.com</a><br />
+            Need help? Email us at
+            <a href="mailto:hello@veridatapro.com">hello@veridatapro.com</a>
+        </footer>
+    </div>
+</body>
+
+</html>

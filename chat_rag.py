@@ -1,26 +1,41 @@
-import os
 from dotenv import load_dotenv
+load_dotenv()
+
 from langchain.chat_models import init_chat_model
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
-from langchain.memory import ConversationSummaryMemory
-from langchain.chains import ConversationChain
+from langchain.prompts import ChatPromptTemplate
+from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_core.chat_history import InMemoryChatMessageHistory
 
-# Load env and initialize Gemini model
-load_dotenv()
-model = init_chat_model("gemini-2.5-flash", model_provider="google_genai")
+# Initialize Gemini model
+model = init_chat_model("gemini-1.5-flash", model_provider="google_genai")
 
-# Global memory store per user
+# Per-user memory storage
 memory_store = {}
 
-def get_or_create_chat_chain(user_id):
-    if user_id not in memory_store:
-        memory = ConversationSummaryMemory(llm=model)
-        chain = ConversationChain(llm=model, memory=memory, verbose=False)
-        memory_store[user_id] = chain
-    return memory_store[user_id]
+def get_or_create_chat_chain(user_id: str):
+    """Creates or retrieves a chat chain with memory for a specific user."""
+    def get_history(session_id: str):
+        if session_id not in memory_store:
+            memory_store[session_id] = InMemoryChatMessageHistory()
+        return memory_store[session_id]
+
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "You are a helpful assistant."),
+        ("human", "{input}")
+    ])
+
+    chain = prompt | model
+
+    return RunnableWithMessageHistory(
+        chain,
+        get_history,
+        input_messages_key="input",
+        history_messages_key="messages"
+    )
 
 # Step 1: Load and split text file into chunks
 def load_and_split_text(file_path):
@@ -47,7 +62,11 @@ def rephrase_question(original_question):
     Return only the 3 alternative questions in a numbered list.
     """
     response = model.invoke(prompt)
-    return [line.strip("0123456789. ").strip() for line in response.content.strip().split("\n") if line.strip()]
+    return [
+        line.strip("0123456789. ").strip()
+        for line in response.content.strip().split("\n")
+        if line.strip()
+    ]
 
 # Step 4: Retrieve top matching chunks for each rephrased query
 def search_chunks(rephrased_questions, retriever):
@@ -55,6 +74,7 @@ def search_chunks(rephrased_questions, retriever):
     for q in rephrased_questions:
         docs = retriever.invoke(q)
         all_docs.extend(docs)
+    # Deduplicate by content
     unique_docs = {doc.page_content: doc for doc in all_docs}.values()
     return list(unique_docs)
 
@@ -96,19 +116,19 @@ def orchestrate_chat(file_path, user_question):
     context_chunks = search_chunks(rephrased_questions, retriever)
     return answer_with_context(user_question, context_chunks)
 
-# Example usage
+# Test-only
 if __name__ == "__main__":
-    user_question = "what time are you open?"
-    file_path = "company_doc.txt"
-    user_id = "12345"  # This should be dynamically passed (e.g., Telegram user ID)
+    user_question = "what are your AI services?"
+    user_id = "12345"
+    doc_path = "uploads/company_doc.txt"
 
     intent = classify_intent(user_question)
+    print(f"Classified as: {intent}")
 
     if intent == "business":
-        final_answer = orchestrate_chat(file_path, user_question)
+        answer = orchestrate_chat(doc_path, user_question)
     else:
         chain = get_or_create_chat_chain(user_id)
-        final_answer = chain.predict(input=user_question)
+        answer = chain.invoke({"input": user_question}, config={"configurable": {"session_id": user_id}})
 
-    print("\nFinal Answer:\n")
-    print(final_answer)
+    print("\nAnswer:\n", answer)
